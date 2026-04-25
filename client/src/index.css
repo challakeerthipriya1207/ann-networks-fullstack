@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #F8FAFF; /* Your new clean secondary background */
+    color: #475569; /* Your new default body text color */
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #0F172A; /* Your new dark heading color */
+  }
+}
