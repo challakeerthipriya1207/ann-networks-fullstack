@@ -27,7 +27,7 @@ const AdminDashboard = () => {
 
   const fetchJobs = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/jobs');
+      const response = await axios.get('https://ann-networks-api.onrender.com/api/jobs');
       setJobList(response.data);
     } catch (error) {
       console.error("Error fetching jobs:", error);
@@ -47,7 +47,7 @@ const AdminDashboard = () => {
   const handleEditClick = async (job) => {
     try {
       // Fetch the full article to get the description
-      const response = await axios.get(`http://localhost:5000/api/blogs/${job.article_id}`);
+      const response = await axios.get(`https://ann-networks-api.onrender.com/api/blogs/${job.article_id}`);
       const blogData = response.data;
 
       // Pre-fill the form
@@ -88,14 +88,14 @@ const AdminDashboard = () => {
       
       if (editingId) {
         // UPDATE EXISTING JOB
-        await axios.put(`http://localhost:5000/api/admin/jobs/${editingId}`, formData, {
+        await axios.put(`https://ann-networks-api.onrender.com/api/admin/jobs/${editingId}`, formData, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setMessage({ type: 'success', text: 'Job successfully updated!' });
         setEditingId(null); // Exit edit mode
       } else {
         // CREATE NEW JOB
-        await axios.post('http://localhost:5000/api/admin/jobs', formData, {
+        await axios.post('https://ann-networks-api.onrender.com/api/admin/jobs', formData, {
           headers: { Authorization: `Bearer ${token}` }
         });
         setMessage({ type: 'success', text: 'Job successfully published!' });
@@ -114,7 +114,7 @@ const AdminDashboard = () => {
 
     try {
       const token = localStorage.getItem('adminToken');
-      await axios.delete(`http://localhost:5000/api/admin/jobs/${jobId}`, {
+      await axios.delete(`https://ann-networks-api.onrender.com/api/admin/jobs/${jobId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setJobList(jobList.filter(job => job.id !== jobId));

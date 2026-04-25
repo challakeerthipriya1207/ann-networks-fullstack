@@ -12,7 +12,7 @@ const Blog = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/blogs');
+        const response = await axios.get('https://ann-networks-api.onrender.com/api/blogs');
         setArticles(response.data);
         setLoading(false);
       } catch (error) {

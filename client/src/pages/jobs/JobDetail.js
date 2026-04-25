@@ -10,7 +10,7 @@ const JobDetail = () => {
   useEffect(() => {
     const fetchSingleBlog = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/blogs/${id}`);
+        const response = await axios.get(`https://ann-networks-api.onrender.com/api/blogs/${id}`);
         setArticle(response.data);
         setLoading(false);
       } catch (error) {
@@ -126,4 +126,4 @@ const JobDetail = () => {
   );
 };
 
-export default JobDetail;
+export default JobDetail; 
