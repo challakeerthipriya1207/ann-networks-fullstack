@@ -20,7 +20,7 @@ const Home = () => {
             <Link to="/jobs" className="bg-secondary text-white px-7 py-3 rounded-[8px] font-[600] hover:bg-secondaryHover hover:-translate-y-[1px] transition-all shadow-btn text-center">
               Browse IT Jobs
             </Link>
-            <Link to="/consultation" className="bg-transparent border-2 border-secondary text-secondary px-7 py-3 rounded-[8px] font-[600] hover:bg-tagBg transition-all text-center">
+            <Link to="/consulting" className="bg-transparent border-2 border-secondary text-secondary px-7 py-3 rounded-[8px] font-[600] hover:bg-tagBg transition-all text-center">
               Consult Now
             </Link>
           </div>
@@ -233,7 +233,7 @@ const Home = () => {
             <Link to="/jobs" className="bg-secondary text-white px-7 py-3 rounded-[8px] font-[600] hover:bg-secondaryHover hover:-translate-y-[1px] transition-all shadow-btn">
               Browse IT Jobs
             </Link>
-            <Link to="/consultation" className="bg-transparent border-2 border-borderLight text-white px-7 py-3 rounded-[8px] font-[600] hover:bg-white hover:text-primary transition-colors">
+            <Link to="/consulting" className="bg-transparent border-2 border-borderLight text-white px-7 py-3 rounded-[8px] font-[600] hover:bg-white hover:text-primary transition-colors">
               Consult Now
             </Link>
           </div>

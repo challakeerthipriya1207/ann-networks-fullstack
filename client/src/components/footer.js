@@ -1,51 +1,92 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FiMail, FiLinkedin, FiTwitter } from 'react-icons/fi';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#111620] text-gray-300 py-12 px-6 border-t border-gray-800">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="bg-slate-800 pt-16 pb-6 px-6 font-sans">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between gap-12 mb-12">
         
-        {/* Brand Section */}
-        <div>
-          <h3 className="text-2xl font-bold text-white mb-4">ANN NETWORKS</h3>
-          <p className="text-sm leading-relaxed max-w-xs">
-            Bridging the gap between education and the IT industry. Your trusted partner for career growth.
-          </p>
+        {/* Column 1 — Brand */}
+        <div className="md:w-1/2">
+          <h3 className="text-white text-xl font-bold mb-2 tracking-tight">ANN NETWORKS</h3>
+          <p className="text-slate-400 text-sm mb-6">Bridging academia and the IT industry.</p>
+          
+          {/* Live Badge */}
+          <div className="inline-flex items-center gap-2 bg-green-900/40 text-green-400 border border-green-700/60 rounded-full px-3 py-1.5 text-xs font-medium mb-8">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            Actively posting IT jobs
+          </div>
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-5">
+            <a href="mailto:challahoney13@gmail.com" className="text-slate-400 hover:text-white transition-colors duration-200" title="Email Us">
+              <FiMail className="text-xl" />
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors duration-200" title="LinkedIn">
+              <FiLinkedin className="text-xl" />
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors duration-200" title="Twitter / X">
+              <FiTwitter className="text-xl" />
+            </a>
+          </div>
         </div>
 
-        {/* Quick Links */}
-        <div>
-          <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
-          <ul className="space-y-2 text-sm">
-            <li><Link to="/" className="hover:text-secondary transition">Home</Link></li>
-            <li><Link to="/services" className="hover:text-secondary transition">Services</Link></li>
-            <li><Link to="/jobs" className="hover:text-secondary transition">Browse IT Jobs</Link></li>
-            <li><Link to="/blog" className="hover:text-secondary transition">Blog</Link></li>
-            <li><Link to="/consulting" className="hover:text-secondary transition">Book a Consultant</Link></li>
+        {/* Column 2 — Quick Links */}
+        <div className="md:w-1/3">
+          <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-6">Explore</h4>
+          <ul className="space-y-4">
+            <li>
+              <Link to="/" className="text-slate-400 hover:text-white transition-colors duration-200 text-sm block">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/jobs" className="flex items-center text-slate-400 hover:text-white transition-colors duration-200 text-sm">
+                Browse IT Jobs 
+                <span className="ml-3 bg-blue-600 text-white text-[10px] px-1.5 py-0.5 rounded uppercase font-bold tracking-wider">New</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/blog" className="text-slate-400 hover:text-white transition-colors duration-200 text-sm block">
+                Articles
+              </Link>
+            </li>
+            <li>
+              <Link to="/consulting" className="text-slate-400 hover:text-white transition-colors duration-200 text-sm block">
+                Consultation
+              </Link>
+            </li>
           </ul>
         </div>
 
-        {/* Contact Info */}
-        <div>
-          <h4 className="text-lg font-semibold text-white mb-4">Contact Us</h4>
-          <ul className="space-y-3 text-sm">
-            <li className="flex items-center gap-2">
-              <span>📧</span> <a href="mailto:challahoney13@gmail.com" className="hover:text-secondary">contact@annnetworks.in</a>
-            </li>
-            <li className="flex items-center gap-2">
-              <span>📱</span> <a href="https://wa.me/91XXXXXXXXXX" className="hover:text-secondary">WhatsApp: +91-XXXXXXXXXX</a>
-            </li>
-            <li className="flex items-center gap-2">
-              <span>📞</span> <a href="tel:+91XXXXXXXXXX" className="hover:text-secondary">Call: +91-XXXXXXXXXX</a>
-            </li>
-          </ul>
-        </div>
       </div>
 
-      {/* Bottom Line */}
-      <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
-        <p>&copy; 2025 ANN Networks. All rights reserved.</p>
+      {/* Bottom Bar */}
+      <div className="max-w-6xl mx-auto pt-6 border-t border-slate-700 flex flex-col md:flex-row justify-between items-center gap-4">
+        
+        {/* Left: Copyright */}
+        <div className="text-slate-500 text-sm">
+          &copy; {new Date().getFullYear()} ANN Networks. All rights reserved.
+        </div>
+
+        {/* Center/Right: Legal Links */}
+        <div className="flex items-center gap-4 text-slate-500 text-sm">
+          <Link to="#" className="hover:text-slate-400 transition-colors">Privacy Policy</Link>
+          <span>&middot;</span>
+          <Link to="#" className="hover:text-slate-400 transition-colors">Terms of Use</Link>
+        </div>
+
+        {/* Far Right: Secret Admin Link */}
+        <div>
+          <Link to="/admin-login" className="text-slate-600 hover:text-slate-400 text-sm transition-colors duration-300">
+            Admin
+          </Link>
+        </div>
+
       </div>
     </footer>
   );

@@ -6,9 +6,10 @@ const JobListings = () => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   
-  // NEW: 1. Create a state to track what the user types in the search bar
+  // State to track what the user types in the search bar
   const [searchTerm, setSearchTerm] = useState("");
 
+  // Fetch the live data from MySQL when the component loads
   useEffect(() => {
     const fetchJobs = async () => {
       try {
@@ -23,20 +24,23 @@ const JobListings = () => {
     fetchJobs();
   }, []);
 
-  // NEW: 2. Create a filtered list of jobs based on the search term
+  // Create a filtered list of jobs based on the search term
   const filteredJobs = jobs.filter((job) => {
-    // If the search bar is empty, show all jobs
     if (searchTerm === "") return true;
     
-    // Convert everything to lowercase so the search isn't case-sensitive
     const searchLower = searchTerm.toLowerCase();
     
-    // Check if the search term matches the title, company type, location, or skills
+    // Safely check if fields exist before calling toLowerCase()
+    const title = job.title ? job.title.toLowerCase() : "";
+    const company = job.company_type ? job.company_type.toLowerCase() : "";
+    const loc = job.location ? job.location.toLowerCase() : "";
+    const skills = job.skills ? job.skills.toLowerCase() : "";
+
     return (
-      job.title.toLowerCase().includes(searchLower) ||
-      job.company_type.toLowerCase().includes(searchLower) ||
-      job.location.toLowerCase().includes(searchLower) ||
-      (job.skills && job.skills.toLowerCase().includes(searchLower))
+      title.includes(searchLower) ||
+      company.includes(searchLower) ||
+      loc.includes(searchLower) ||
+      skills.includes(searchLower)
     );
   });
 
@@ -62,7 +66,6 @@ const JobListings = () => {
           <div className="flex flex-col md:flex-row gap-4 mb-4">
             <div className="relative flex-grow">
               <span className="absolute left-3 top-3 text-gray-400">🔍</span>
-              {/* NEW: 3. Connect the input to the searchTerm state */}
               <input 
                 type="text" 
                 value={searchTerm}
@@ -82,10 +85,8 @@ const JobListings = () => {
           {loading ? (
             <div className="text-center text-primary font-bold text-xl py-10">Loading jobs from database...</div>
           ) : filteredJobs.length === 0 ? (
-            /* NEW: 4. Check the length of filteredJobs instead of jobs */
             <div className="text-center text-gray-500 py-10">No jobs match your search.</div>
           ) : (
-            /* NEW: 5. Map over filteredJobs instead of all jobs */
             filteredJobs.map((job) => (
               <div key={job.id} className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 md:p-8 hover:shadow-md transition flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                 
@@ -120,23 +121,23 @@ const JobListings = () => {
                   </div>
                 </div>
 
-                {/* Right Side: Action Buttons */}
-                <div className="w-full md:w-auto flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
-                  <Link 
-                    to={`/blog/${job.article_id}`} 
-                    className="bg-secondary text-white text-center px-6 py-3 rounded-lg font-bold hover:bg-blue-600 transition shadow-sm w-full"
-                  >
-                    Read Full Article
-                  </Link>
-                  <a 
-                    href="https://wa.me/91XXXXXXXXXX" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="bg-transparent border-2 border-secondary text-secondary text-center px-6 py-3 rounded-lg font-bold hover:bg-secondary hover:text-white transition shadow-sm w-full flex justify-center items-center gap-2"
-                  >
-                    <span>💬</span> Express Interest
-                  </a>
-                </div>
+               {/* Right Side: Action Buttons */}
+<div className="w-full md:w-auto flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
+  <Link 
+    to={`/blog/${job.article_id}`} 
+    className="bg-secondary text-white text-center px-6 py-3 rounded-lg font-bold hover:bg-blue-600 transition shadow-sm w-full"
+  >
+    Read Full Article
+  </Link>
+  
+  {/* NEW: Express Interest now routes to the Consulting page */}
+  <Link 
+    to="/consulting" 
+    className="bg-transparent border-2 border-secondary text-secondary text-center px-6 py-3 rounded-lg font-bold hover:bg-secondary hover:text-white transition shadow-sm w-full flex justify-center items-center gap-2"
+  >
+    <span>💬</span> Express Interest
+  </Link>
+</div>
                 
               </div>
             ))

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-
+import Footer from './components/Footer';
 // Page Imports
 import Home from './pages/Home';
 import Blog from './pages/Blog';
@@ -9,6 +9,8 @@ import JobListings from './pages/jobs/JobListings';
 import Consultation from './pages/consulting/Consultation';
 import Services from './pages/Services';
 import JobDetail from './pages/jobs/JobDetail';
+import AdminLogin from './pages/admin/AdminLogin';
+import AdminDashboard from './pages/admin/AdminDashboard';
 
 // You will import the rest of your pages here as you build them...
 
@@ -43,9 +45,12 @@ function App() {
 
             {/* 404 Catch-All */}
             <Route path="*" element={<NotFound />} />
+            <Route path="/admin-login" element={<AdminLogin />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
           </Routes>
         </main>
-        {/* Footer Component would go here */}
+        <Footer />
+        
       </div>
     </Router>
   );

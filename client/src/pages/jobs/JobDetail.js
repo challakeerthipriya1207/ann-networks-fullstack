@@ -69,60 +69,54 @@ const JobDetail = () => {
           </div>
         </div>
 
-        {/* SIDEBAR: DYNAMIC CONTACT CARD */}
+        {/* SIDEBAR: UNIFIED PRIME CONSULTANT CARD */}
         <div className="lg:w-1/3 space-y-8">
-          <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-6 sticky top-24">
-            <h3 className="text-xl font-bold text-primary mb-6 border-b border-gray-100 pb-4">
-              Interested in This Role? Get in Touch.
-            </h3>
+          {/* Prime Consultant Sidebar */}
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 sticky top-6">
+            <h3 className="text-[18px] font-bold text-textMain mb-6">Interested in This Role? Get in Touch.</h3>
             
+            {/* Consultant Profile */}
             <div className="flex items-center gap-4 mb-6">
-              <div className="bg-blue-50 w-14 h-14 rounded-full flex items-center justify-center text-2xl shrink-0">
-                👤
+              <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center text-xl font-bold shrink-0">
+                A {/* Or use an icon/avatar here */}
               </div>
               <div>
-                <h4 className="text-lg font-bold text-primary">{article.contact_name}</h4>
-                <p className="text-sm font-semibold text-secondary">{article.contact_role}</p>
+                <h4 className="font-bold text-textMain">ANN Prime Consultant</h4>
+                <p className="text-sm text-secondary font-semibold">Expert Career Guidance</p>
               </div>
             </div>
 
-            <div className="space-y-3 mb-6">
-              {/* WhatsApp Button */}
-              {article.contact_whatsapp && (
-                <a href={`https://wa.me/${article.contact_whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-[#e7f8ed] transition group border border-gray-100">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xl">📱</span>
-                    <span className="text-sm font-semibold text-textMain group-hover:text-[#25D366] transition">WhatsApp</span>
-                  </div>
-                  <span className="bg-[#25D366] text-white text-xs font-bold px-3 py-1.5 rounded shadow-sm">Chat</span>
-                </a>
-              )}
+            {/* Unified Action Buttons */}
+            <div className="space-y-3">
+              {/* Option A: Direct them to the Consulting Page */}
+              <Link 
+                to="/consulting" 
+                className="w-full flex items-center justify-between bg-primary text-white px-4 py-3 rounded-lg hover:bg-gray-800 transition-colors text-sm font-semibold"
+              >
+                <div className="flex items-center gap-2">
+                  <span>📅</span> Book a Consultation
+                </div>
+                <span className="bg-white/20 px-2 py-0.5 rounded text-xs">Book</span>
+              </Link>
 
-              {/* Email Button */}
-              {article.contact_email && (
-                <a href={`mailto:${article.contact_email}`} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-blue-50 transition group border border-gray-100">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xl">📧</span>
-                    <span className="text-sm font-semibold text-textMain group-hover:text-secondary transition">Email</span>
-                  </div>
-                  <span className="bg-secondary text-white text-xs font-bold px-3 py-1.5 rounded shadow-sm">Send</span>
-                </a>
-              )}
-
-              {/* Phone Button */}
-              {article.contact_phone && (
-                <a href={`tel:${article.contact_phone}`} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition group border border-gray-100">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xl">📞</span>
-                    <span className="text-sm font-semibold text-textMain group-hover:text-primary transition">Call</span>
-                  </div>
-                  <span className="bg-primary text-white text-xs font-bold px-3 py-1.5 rounded shadow-sm">Dial</span>
-                </a>
-              )}
+              {/* Option B: Direct WhatsApp to the Prime Consultant */}
+              <a 
+                href="https://wa.me/91XXXXXXXXXX" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-full flex items-center justify-between bg-green-50 text-green-700 border border-green-200 px-4 py-3 rounded-lg hover:bg-green-100 transition-colors text-sm font-semibold"
+              >
+                <div className="flex items-center gap-2">
+                  <span>📱</span> WhatsApp Chat
+                </div>
+                <span className="bg-green-200 px-2 py-0.5 rounded text-xs text-green-800">Chat</span>
+              </a>
             </div>
 
-            <div className="bg-blue-50 border-l-4 border-secondary p-3 text-xs text-textMain leading-relaxed">
-              <span className="font-bold text-primary">Note: </span> You can reach out to ask any questions about this job role, understand if you're eligible, or express interest. No registration required.
+            <div className="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-100">
+              <p className="text-xs text-textMuted leading-relaxed">
+                <strong className="text-textMain">Note:</strong> Our Prime Consultant handles all inquiries. Reach out to ask questions about this role, verify eligibility, or express your interest.
+              </p>
             </div>
           </div>
         </div>
