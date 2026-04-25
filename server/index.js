@@ -7,7 +7,11 @@ const db = require('./config/db');
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: ["http://localhost:3000", "https://ann-networks-fullstack.vercel.app"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+}));
 app.use(express.json());
 
 // ==========================================
